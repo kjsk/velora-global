@@ -4,7 +4,7 @@ const PricingService = require('./services/pricingService');
 const CurrencyService = require('./services/currencyService');
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001; // Use Railway's PORT or fallback to 3001
 const pricingService = new PricingService();
 const currencyService = new CurrencyService();
 console.log('Currency service initialized:', currencyService ? 'Yes' : 'No');
