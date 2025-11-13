@@ -12,6 +12,15 @@ console.log('Currency service initialized:', currencyService ? 'Yes' : 'No');
 app.use(cors());
 app.use(express.json());
 
+// Health check endpoint for Railway
+app.get('/health', (req, res) => {
+  res.status(200).json({ 
+    status: 'healthy', 
+    timestamp: new Date().toISOString(),
+    service: 'velora-global-api'
+  });
+});
+
 app.post('/api/quote', (req, res) => {
   console.log('Quote request received:', req.body);
   res.status(200).send({ message: 'Quote request received successfully!' });
